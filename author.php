@@ -10,7 +10,7 @@
 				<div id = "author-info">
 					<div id = "avatar-boundary">
 						<img class = "circleBase" id = "avatar"
-							src = " <?php echo bloginfo('template_directory');?>/images/authors/<?php echo $curauth->ID ?>.jpg"
+							src = " <?php echo bloginfo('template_directory');?>/images/authors/<?php echo $curauth->first_name ?>-web.jpg"
 						/>
 					</div>
 					<h2><?php echo $curauth->first_name.' '.$curauth->last_name; ?></h2>
@@ -24,11 +24,12 @@
 		</div>	
     	<?php get_sidebar(); ?>
 
+    	<?php $author_shown = FALSE ?>
 
- 	
     	<!--BEGIN #masonry -->	
 		<div id="masonry">
-					
+			
+			<?php if $author_shown : ?>
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 			
 			<!--BEGIN .item -->	
@@ -95,6 +96,9 @@
 			<!--END .item -->	
 			</div>
 			<?php endwhile; endif; ?>
+			<?php else: ?>
+				
+			<?php endif; ?>
 			
 			<?php get_template_part('includes/index-loadmore'); ?>
 					

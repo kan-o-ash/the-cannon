@@ -8,6 +8,7 @@ Template Name: abouttemplate
     .about-avatar {
         float: left;
         margin-left: 10%;
+        height: 130px;
     }
 
     .about-info {
@@ -16,6 +17,13 @@ Template Name: abouttemplate
         float: left;
         margin-left: 10%;
     }
+
+    table a
+    {
+        display:block;
+        text-decoration:none;
+    }
+</style>
 </style>
 <script type="text/javascript">
     function fitCell(){
@@ -42,36 +50,66 @@ Template Name: abouttemplate
 
 </script>
 <?php get_header(); ?>
-    
-    <?php 
-        $authors = get_users();
-        $chunkedAuthors = array_chunk($authors, 3);
-     ?> 
 
-    <?php ?>
-    <table> 
-        <caption>
-            <h2 class="post-title">Meet the team</h2>
-            <h1 class = "post-title">1T2 - 1T3</h1>
-        </caption>
-        <tbody>
-            <?php foreach ($chunkedAuthors as $currRow): ?>
-            <tr>
-                <?php foreach ($currRow as $curauth): ?>
-                <td class = "author-cell" width="15%">
-                    <img class = "about-avatar"
-                        src = " <?php echo bloginfo('template_directory');?>/images/authors/<?php echo $curauth->ID ?>.jpg"
-                    />
+    <!--BEGIN #content -->
+    <div id="content">  
+        
+        
+        <!-- #hentry-wrap -->
+        <div id="hentry-wrap">
+            
+            <!--BEGIN .hentry -->
+            <div> 
                 
-                    <?php 
-                        $info = $curauth->first_name.' '.$curauth->last_name."<br />".$curauth->aim."<br />".$curauth->yim; 
-                    ?>
-                    <div class = "about-info"><?php echo $info ?></div>
-                </td>
-                <?php endforeach; ?>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+                <!--BEGIN .post-header-->
+                <div class="post-header">
+                    <div class="inner">
+                        <h2 class="post-title">Meet the team</h2>
+                        <h1 class="post-title">1T2 - 1T3</h1>
+                    </div>
+                <!--END .post-header -->
+                </div>
+                    
+                <!--BEGIN .post-content -->
+                <div class="post-content">
 
+                 <?php 
+                    $authors = get_users();
+                    $chunkedAuthors = array_chunk($authors, 3);
+                 ?> 
+
+                <?php ?>
+                <table> 
+                    <tbody>
+                        <?php foreach ($chunkedAuthors as $currRow): ?>
+                        <tr>
+                            <?php foreach ($currRow as $curauth): ?>
+                            
+                                <td class = "author-cell" width="15%">
+                                    <a href = "<?php echo get_author_posts_url($curauth->ID) ?>">
+                                    <img class = "about-avatar"
+                                        src = " <?php echo bloginfo('template_directory');?>/images/authors/<?php echo $curauth->first_name ?>-web.jpg"
+                                    />
+                                    <?php 
+                                        $info = $curauth->first_name.' '.$curauth->last_name."<br />".$curauth->aim."<br />".$curauth->yim; 
+                                    ?>
+                                    <div class = "about-info"><?php echo $info ?></div>
+                                    </a>
+                                </td>
+                            
+                            <?php endforeach; ?>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+                    
+                <!--END .post-content -->
+                </div>
+                
+            <!--END .hentry-->  
+            </div>
+        </div>
+        <!-- /#hentry-wrap -->
+        
+    </div><!-- #content -->
 <?php get_footer(); ?>
