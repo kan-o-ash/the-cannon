@@ -56,23 +56,8 @@
 			<?php endif; ?>
 	    	</div>
     	<!-- END #archive-title -->
-    	<?php if (is_author()) : ?>
-    		<div id = "sidebar">
-    			<div id = "blog-sidebar" class = "widget-area">
-    				<div id = "author-info">
-						<div class = "circleBase" id = "avatar"></div>
-						<h2><?php echo get_the_author_meta( 'description' ); ?></h2>
-						<h3>NΨ 1T4</h3>
-						<p>
-						Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-						</p>
-					</div>
-				</div>
-    		</div>	
-		<?php endif; ?>
+    	
     	<?php get_sidebar(); ?>
-
-
  	
     	<!--BEGIN #masonry -->	
 		<div id="masonry">
@@ -98,7 +83,6 @@
 						<a href="<?php the_permalink(); ?>"><?php dt_image(300, ''); ?></a>
 					<!--END .featured-image -->
 					</div>
-
 					<?php endif; ?>
 					
 					<span class="meta-category"><?php the_category(', '); ?></span>
