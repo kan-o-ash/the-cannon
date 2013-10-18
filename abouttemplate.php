@@ -5,17 +5,24 @@ Template Name: abouttemplate
 ?>
 
 <style type="text/css">
+    .author-cell a {
+        width: 160px;
+        margin: auto;
+    }
+
     .about-avatar {
         float: left;
-        margin-left: 10%;
-        height: 130px;
+        margin: auto;
+        height: 200px;
     }
 
     .about-info {
         margin-top: 5%;
         font-size: 1.2em;
         float: left;
-        margin-left: 10%;
+        width:  160px;
+        text-align: center;
+        color: black;
     }
 
     table a
@@ -26,27 +33,6 @@ Template Name: abouttemplate
 </style>
 </style>
 <script type="text/javascript">
-    function fitCell(){
-        if ( $('.author-cell').width() <= $('.about-avatar').width() + $('.about-info').width() ){
-            $('.about-info').css({
-                'float' : 'left',
-                'margin-top' : '1%'
-            });
-        }
-        else {
-            $('.about-info').css({
-                'float' : 'right',
-                'margin-top' : '5%'
-            });
-        }
-
-    }
-
-    $(document).ready(){
-        fitCell();
-    }
-
-    $(window).resize(fitCell());
 
 </script>
 <?php get_header(); ?>
@@ -74,19 +60,34 @@ Template Name: abouttemplate
                 <div class="post-content">
 
                  <?php 
-                    $authors = get_users();
-                    $chunkedAuthors = array_chunk($authors, 3);
-                 ?> 
+                    $authors = get_users('orderby=post_count');
+                    $topmen = [];
+                    // Sorts array of authors, so top people are first
+                    // NOTE: uses first names, so very temporary/fragile!
+                    foreach ($authors as $key => $author) {
+                        if ($author->$first_name =='Ashkan'){
+                            array_unshift($topmen,  $author);
+                            unset($authors[$key]);
+                        }
+                        if ($author->first_name == 'Luke'){
+                            array_push($topmen,  $author);
+                            unset($authors[$key]);
+                        }
+
+                        $authors = array_merge($topmen, $authors);
+                    }
+                    $chunkedAuthors = array_chunk($authors, 3); 
+                ?>
 
                 <?php ?>
-                <table> 
-                    <tbody>
+                <div classs = "table"> 
+                    <!-- <tbody> -->
                         <?php foreach ($chunkedAuthors as $currRow): ?>
                         <tr>
                             <?php foreach ($currRow as $curauth): ?>
                             
-                                <td class = "author-cell" width="15%">
-                                    <a href = "<?php echo get_author_posts_url($curauth->ID) ?>">
+                                <td class = "author-cell">
+                                    <a class = "author-link" href = "<?php echo get_author_posts_url($curauth->ID) ?>">
                                     <img class = "about-avatar"
                                         src = " <?php echo bloginfo('template_directory');?>/images/authors/<?php echo $curauth->first_name ?>-web.jpg"
                                     />
@@ -100,8 +101,8 @@ Template Name: abouttemplate
                             <?php endforeach; ?>
                         </tr>
                         <?php endforeach; ?>
-                    </tbody>
-                </table>
+                    <!-- </tbody> -->
+                </div>
                     
                 <!--END .post-content -->
                 </div>
