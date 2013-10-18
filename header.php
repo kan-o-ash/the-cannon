@@ -4,8 +4,6 @@
 <!--[if IE 8]><html <?php language_attributes(); ?> class="ie8"><![endif]-->
 <!--[if gt IE 8]><!--><html <?php language_attributes(); ?>><!--<![endif]-->
 <head>
-	<link rel="icon" type="image/png" href="http://skule.ca/content/cannon-favicon.png">
-	<meta property="fb:admins" content="508350886" />
        <meta property="fb:admins" content="508350886" />
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,7 +27,6 @@
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
 	<link rel="stylesheet" href="<?php echo bloginfo('stylesheet_url').'?'.filemtime(get_stylesheet_directory().'/style.css'); ?>">
-
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri().'/custom-style.css'.'?'.filemtime(get_stylesheet_directory().'/custom-style.css'); ?>">
 
 	<?php if(get_option('dt_custom_css') && get_option('dt_custom_css')!=""): ?>
@@ -43,6 +40,7 @@
 	<!--[if lt IE 9]>
 		<script src="<?php echo get_template_directory_uri(); ?>/engine/js/selectivizr.js"></script>
 	<![endif]-->
+	<link rel="stylesheet" href="<?php echo get_template_directory_uri().'/custom-mobile.css'.'?'.filemtime(get_stylesheet_directory().'/custom-mobile.css'); ?>">
 
 </head>
 
@@ -70,12 +68,22 @@
 		<!-- #secondary-menu -->
 		<div id="secondary-menu">
 			
-			<!-- .centered-menu -->
+			<!-- .centered-menu --><!--
 			<div class="centered-menu">
 				<?php if ( has_nav_menu( 'secondary-menu' ) ) : wp_nav_menu( array( 'theme_location' => 'secondary-menu', 'depth' => 2 ) ); endif; ?>
-			</div>
+			</div>-->
 			<!-- /.centered-menu -->
-			
+			<!-- .left-menu -->
+			<table><tr><td class="navigation">
+			<div class="secondary-menu-left">
+				<?php if ( has_nav_menu( 'secondary-menu' ) ) : wp_nav_menu( array( 'theme_location' => 'secondary-menu', 'depth' => 2 ) ); endif; ?>
+			</div>
+			<!-- /.left-menu -->
+			</td><td class="menu-search">
+			<div class="">
+				<?php the_widget("DT_Search", array("search_text" => "search...")) ?>
+			</div>
+			</td></tr></table>
 		</div>
 		<!-- /#secondary-menu -->
 			

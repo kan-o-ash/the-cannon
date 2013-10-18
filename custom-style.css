@@ -2,15 +2,54 @@
 ==  CUSTOM STYLESHEET  ========================================================
 
 HOW TO USE THIS FILE:
-	Simply copy an existing style from the style.css file to this one and 
-	modify however you like. It will override the default style.
+    Simply copy an existing style from the style.css file to this one and 
+    modify however you like. It will override the default style.
 
 WHY USE THIS FILE:
-	Adding your custom CSS here will make it much easier to upgrade to a 
-	newer version of this theme without losing any of your customizations.
+    Adding your custom CSS here will make it much easier to upgrade to a 
+    newer version of this theme without losing any of your customizations.
 
 ===============================================================================
 ADD YOUR CUSTOM CSS BELOW THIS LINE */
+
+body {
+    background: url("http://skule.ca/content/thecannon_bg_pattern.png");
+    font-family: 'Merriweather', Open Sans, Helvetica, Arial, sans-serif;
+    margin: 0;
+}
+
+#main {
+    width: 960px;
+}
+
+.page #content { width: 100%;  }
+
+.page .hentry,
+.single .hentry {
+    width: 100%;
+}
+
+#hentry-wrap {
+    width: 100%;
+}
+
+.page #content {
+    max-width: 100%;
+    float: left;
+}
+
+#header {
+    padding: 0 0 30px;
+}
+
+#header-inner {
+    width: 960px;
+}
+
+#logo {
+    background: none;
+}
+
 #secondary-menu {
     width: 100%;
     background: #333;
@@ -22,34 +61,77 @@ ADD YOUR CUSTOM CSS BELOW THIS LINE */
     color: #fff;
 }
 
+#secondary-menu table{
+    width: 960px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#secondary-menu ul a {
+    color: none;
+}
+
+.post-header .meta-author a{
+    font-size: 12px;
+}
+
+.post-header .meta-author a:hover{
+    color: #0080ff;
+}
+
+#secondary-menu .navigation{
+    float: left;
+}
+
+#secondary-menu .menu-search{
+    float: right;
+}
+
+.menu-search div{
+    margin: 6px 0;
+}
+
 #secondary-menu ul a:hover {
     color: #0080ff;
 }
 
 #secondary-menu ul ul{
+    min-width:600px;
     width:auto;
     border-radius:20px;
 }
 
 #secondary-menu ul li:hover ul, #secondary-menu ul li.sfHover ul{
-    left:auto;
+    left:0px;
+    top:45px;
+}
+
+#secondary-menu td, tr, table{
+    background: none;
+    padding: 0;
+    margin: 0;
+    border-width:0;
 }
 
 #primary-menu{
     display:none;
 }
 
-.fbFeedbackContent{
-    min-height: 0px !important;
+#primary-menu ul a {
+    text-shadow: none;
 }
 
-body{
-    margin: 0;
+#primary-menu ul li.current-menu-item li a:hover,
+#primary-menu ul a.active,
+#primary-menu ul ul li.current-menu-item a,
+#primary-menu ul a:hover {
+    background:#0080ff;
+    color:#333;
 }
 
 #header {
     margin-top: 0;
-    padding: 0 0 25px;
+    padding: 5px 0 10px;
 }
 
 #header-inner {
@@ -57,7 +139,8 @@ body{
 }
 
 #logo{
-    float: left;
+    /*float: left;*/
+    width: 400px;
 }
 
 #logo h1, #logo div{
@@ -82,14 +165,33 @@ body{
     margin: 0 10px 20px 10px;
 }
 
+.item .meta-category {
+    border-radius: 20px;
+}
+
 .featured {
     margin-bottom: 25px;
 }
 
+.featured .post-title a {
+    //color:rgb(255,242,0);
+    color: #fff;
+    font-size: 40px;
+}
+
+.featured-image div .da-wrap {
+    position: relative;
+    width: auto;
+}
+
+.featured .featured-details a.read-more {
+    color:rgb(255,242,0);
+}
+
 #comments {
     float: left;
-    max-width: 620px;
-    width: 620px;
+    width: 640px;
+    max-width: 640px;
     margin: 20px 0;
     padding: 7px 0;
     border: 0;
@@ -102,22 +204,29 @@ body{
 
 #site-title a:hover { color: #9c0; }
 #site-title a:active { color: #9c0; }
-/*
-#ending{
-    text-transform: uppercase;
-    max-width: 940px;
-    margin: 0 auto;
-}*/
-#copyright {
-    /*float:left;*/
 
-}
 .single #content {
     max-width: 640px;
 }
 
 #sidebar {
     margin-right:0;
+}
+
+#sidebar .widget_execphp {
+    padding: 7px;
+}
+
+#sidebar .widget_execphp .widget-inside{
+    padding-bottom: 0px;
+}
+
+.sidebar-on #load-more { width: auto; }
+
+#load-more.disabled,
+#load-more.disabled a,
+#load-more.disabled:hover .count-text {
+    display:none;
 }
 
 ul.social{
@@ -141,7 +250,6 @@ ul.social li{
 
 .sx_like-dark_fav{
     display: none !important;
-
 }
 
 #usp-submit input{
@@ -154,7 +262,6 @@ ul.social li{
     position: absolute;
     left: 0px;
 }
-
 
 /* author sidebar style */
 #author-info {
@@ -189,3 +296,33 @@ ul.social li{
     background-color: #e3e3e3;
     margin: auto;
 }
+
+.page-template-default #content .post-header,
+.page-template-template-fullwidth-php #content .post-header,
+.page-template-abouttemplate-php #content .post-header,
+.single #content .post-header {
+    background: #fff;
+    padding: 20px 30px 5px;
+}
+
+.page-template-default #content .post-content,
+.page-template-template-fullwidth-php #content .post-content,
+.page-template-abouttemplate-php #content .post-content,
+.single #content .post-content {
+    overflow: visible;
+}
+
+.page-template-template-fullwidth-php #content .post-content {  padding: 10px 30px 20px; }
+
+#filter li:hover,
+#filter li.active {
+    background: rgb(3,24,175);
+}
+
+#filter li:hover a,
+#filter li.active a { 
+    color: rgb(255,242,0);
+}
+
+.search-wrap input, .DT_Search input {
+    background: #fff;  }

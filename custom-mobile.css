@@ -1,0 +1,62 @@
+
+/*---------------------------------------------------------------------------*/
+/*  Tablets - for 980px or less
+/*---------------------------------------------------------------------------*/
+
+@media screen and (max-width: 980px) {
+    #container {
+     }
+
+    .search-wrap input, .DT_Search input {
+        background: #fff ;
+        width: 150px !important;    }
+
+    #secondary-menu table {
+        width: 640px ;    }
+    
+    #logo {
+        min-height: 0px;    }
+
+    #comments {
+        width: 100%;    }
+        
+}
+
+
+/*---------------------------------------------------------------------------*/
+/*  Mobiles - for 680px or less
+/*---------------------------------------------------------------------------*/
+
+@media screen and (max-width: 640px) {
+    #header {
+        padding: 0 ;
+    }
+
+    #logo {
+        margin: 0 ;
+    }
+
+    .page-template-default #content .post-content,
+    .page-template-template-fullwidth-php #content .post-content,
+    .single #content .post-content,
+    #comments .inner {
+        padding: 0 20px 20px;   }
+
+    .page-template-default #content .post-header,
+    .page-template-template-fullwidth-php #content .post-header,
+    .page-template-abouttemplate-php #content .post-header,
+    .single #content .post-header {
+        background: #fff;
+        padding: 20px 30px 5px; }
+
+    #container {
+        //width: 360px ;    }
+
+    #rum_sst_tab{
+        display:none;
+    }
+
+    #footer-menu {
+        max-width: 90%;
+        margin: auto;   }
+}
