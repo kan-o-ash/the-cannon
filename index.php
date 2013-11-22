@@ -113,6 +113,8 @@
 			<?php $count++; endwhile; endif; ?>
 			
 			<?php //get_template_part('includes/index-loadmore'); ?>
+
+			<?php get_template_part('includes/index-loadmore'); ?> 
 					
 		<!--END #masonry -->
 		</div>

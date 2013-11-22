@@ -7,17 +7,6 @@ Template Name: abouttemplate
 <?php get_header(); ?>
 
 <style type="text/css">
-<<<<<<< HEAD
-    .author-cell a {
-        width: 160px;
-        margin: auto;
-    }
-
-    .about-avatar {
-        float: left;
-        margin: auto;
-        height: 200px;
-=======
     .author-cell {
         padding: 0;
         width: 33%;
@@ -45,34 +34,10 @@ Template Name: abouttemplate
 
     .about-avatar img{
         width: 160px;
->>>>>>> e6917d67a1e73d38896c6de980c2c92c0a64dbca
     }
 
     .about-info {
         font-size: 1.2em;
-<<<<<<< HEAD
-        float: left;
-        width:  160px;
-        text-align: center;
-        color: black;
-    }
-
-    table a
-    {
-        display:block;
-        text-decoration:none;
-    }
-</style>
-</style>
-<script type="text/javascript">
-
-</script>
-<?php get_header(); ?>
-
-    <!--BEGIN #content -->
-    <div id="content">  
-        
-=======
         width:  100%;
         text-align: center;
         color: black;
@@ -133,81 +98,14 @@ Template Name: abouttemplate
 </script>
     <!--BEGIN #content -->
     <div id="content">  
-		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-		
->>>>>>> e6917d67a1e73d38896c6de980c2c92c0a64dbca
+                <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+                
         
         <!-- #hentry-wrap -->
         <div id="hentry-wrap">
             
             <!--BEGIN .hentry -->
-<<<<<<< HEAD
-            <div> 
-                
-                <!--BEGIN .post-header-->
-                <div class="post-header">
-                    <div class="inner">
-                        <h2 class="post-title">Meet the team</h2>
-                        <h1 class="post-title">1T2 - 1T3</h1>
-                    </div>
-                <!--END .post-header -->
-                </div>
-                    
-                <!--BEGIN .post-content -->
-                <div class="post-content">
-
-                 <?php 
-                    $authors = get_users('orderby=post_count');
-                    $topmen = [];
-                    // Sorts array of authors, so top people are first
-                    // NOTE: uses first names, so very temporary/fragile!
-                    foreach ($authors as $key => $author) {
-                        if ($author->$first_name =='Ashkan'){
-                            array_unshift($topmen,  $author);
-                            unset($authors[$key]);
-                        }
-                        if ($author->first_name == 'Luke'){
-                            array_push($topmen,  $author);
-                            unset($authors[$key]);
-                        }
-
-                        $authors = array_merge($topmen, $authors);
-                    }
-                    $chunkedAuthors = array_chunk($authors, 3); 
-                ?>
-
-                <?php ?>
-                <div classs = "table"> 
-                    <!-- <tbody> -->
-                        <?php foreach ($chunkedAuthors as $currRow): ?>
-                        <tr>
-                            <?php foreach ($currRow as $curauth): ?>
-                            
-                                <td class = "author-cell">
-                                    <a class = "author-link" href = "<?php echo get_author_posts_url($curauth->ID) ?>">
-                                    <img class = "about-avatar"
-                                        src = " <?php echo bloginfo('template_directory');?>/images/authors/<?php echo $curauth->first_name ?>-web.jpg"
-                                    />
-                                    <?php 
-                                        $info = $curauth->first_name.' '.$curauth->last_name."<br />".$curauth->aim."<br />".$curauth->yim; 
-                                    ?>
-                                    <div class = "about-info"><?php echo $info ?></div>
-                                    </a>
-                                </td>
-                            
-                            <?php endforeach; ?>
-                        </tr>
-                        <?php endforeach; ?>
-                    <!-- </tbody> -->
-                </div>
-                    
-                <!--END .post-content -->
-                </div>
-                
-            <!--END .hentry-->  
-            </div>
-=======
-        	<div <?php post_class(); ?> id="post-<?php the_ID(); ?>">
+                <div <?php post_class(); ?> id="post-<?php the_ID(); ?>">
                 
                 <!--BEGIN .post-header-->
                 <div class="post-header">
@@ -257,7 +155,7 @@ Template Name: abouttemplate
                             <div class="author-inner">
                                 <a class="author-link" href="<?php echo get_author_posts_url($curauth->ID); ?>">
                                 <div class="avatar-wrap">
-                                    <div class="about-avatar"> <?php //echo $curauth; ?>
+                                    <div class="about-avatar"> <?php echo $curauth; ?>
                                         <img src="<?php echo bloginfo('template_directory');?>/images/authors/<?php echo $curauth->first_name; ?>-web.jpg"/>
                                     </div>
                                 </div></a>
@@ -267,7 +165,10 @@ Template Name: abouttemplate
                                         if ($curauth->id == 36){
                                             $curauth_email = "arts.culture@cannon.skule.ca";
                                         }
-                                        else{ $curauth_email = $curauth->user_email; }
+                                        else { 
+                                            $curauth_email = $curauth->user_email; 
+                                        }
+                                        
                                         $info = $info . '<br /><a href="mailto:' .$curauth_email.'">'.$curauth_email."</a>";
                                     }
                                 ?>
@@ -286,12 +187,12 @@ Template Name: abouttemplate
             <!--END .hentry-->  
             </div>
 
-			<?php endwhile; else : ?>
+                        <?php endwhile; else : ?>
 
-			<?php endif; ?>
->>>>>>> e6917d67a1e73d38896c6de980c2c92c0a64dbca
+                        <?php endif; ?>
         </div>
         <!-- /#hentry-wrap -->
         
     </div><!-- #content -->
 <?php get_footer(); ?>
+Status API Training Shop Blog About © 2013 GitHub, Inc. Terms Privacy Security Contact 
