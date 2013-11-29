@@ -213,7 +213,7 @@ jQuery(document).ready(function() {
 			if(pageNum <= max) {
 
 				// Remove the traditional navigation.
-				jQuery('.post-navigation').remove();
+				jQuery('.post-navigation').remove();  
 
 			} else {
 
@@ -226,7 +226,7 @@ jQuery(document).ready(function() {
 			 */
 			jQuery('#load-more').not('.disabled').click(function() {
 
-				jQuery(this).unbind('click', dt_getposts());
+				jQuery(this).unbind('click');
 
 				// Are there more posts to load?
 				if(pageNum <= max) {
@@ -249,41 +249,38 @@ jQuery(document).ready(function() {
 	
 							  		dt_hover();
 							  		dt_lightbox();
-	
+								});
+							});
+
+							// Update the button message.
+							if(pageNum <= max) {
+
+								jQuery('#loader').fadeOut(200, function () {
+									pageNum ++;
 									// Update page number and nextLink.
-									pageNum++;
 									nextLink = nextLink.replace(/\/page\/[0-9]?/, '/page/'+ pageNum);
-	
-									// Update the button message.
-									if(pageNum <= max) {
-	
-										jQuery('#loader').fadeOut(200, function () {
-	
-											count = count - parseInt(jQuery('#loader').attr('data-perpage'));
-											jQuery('.count').text(count);
-											jQuery('#detail-holder').fadeIn(200);
-											jQuery('#load-more').bind('click', dt_getposts(pageNum, max, nextLink, count));
-											jQuery('#loader').fadeOut(200);
-											
-										});
-	
-									} else {
-	
-										jQuery('#loader').fadeOut(200, function () {
-	
-											jQuery('#load-more').addClass('disabled');
-											jQuery('.count').text('0');
-											jQuery('#detail-holder').fadeIn(200);
-											jQuery('#load-more').bind('click', dt_getposts(pageNum, max, nextLink, count));
-											jQuery('#loader').fadeOut(200);
-	
-										});
-	
-									}
-	
-							  	});
-						  	
-						  	});
+									
+									count = count - parseInt(jQuery('#loader').attr('data-perpage')) + 1;
+									jQuery('.count').text(count);
+									jQuery('#detail-holder').fadeIn(200);
+									jQuery('#load-more').bind('click', dt_getposts(pageNum, max, nextLink, count));
+									jQuery('#loader').fadeOut(200);
+									
+								});
+
+							} else {
+
+								jQuery('#loader').fadeOut(200, function () {
+
+									jQuery('#load-more').addClass('disabled');
+									jQuery('.count').text('0');
+									jQuery('#detail-holder').fadeIn(200);
+									jQuery('#load-more').bind('click', dt_getposts(pageNum, max, nextLink, count));
+									jQuery('#loader').fadeOut(200);
+
+								});
+
+							}
 						}
 					);
 				}
