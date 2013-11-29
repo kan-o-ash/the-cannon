@@ -2,7 +2,6 @@
 
 	<!--BEGIN #content -->
     <div id="content">
-    	
     	<?php if (!is_author()) : ?>
     		<!-- BEGIN #archive-title -->
 	    	<div id="archive-title">
@@ -135,10 +134,6 @@
 		
 		<div id="masonry-new"></div>
 		
-		<!--BEGIN .post-navigation -->
-		<div class="post-navigation clearfix">
-			<?php dt_pagination(); ?>
-		<!--END .post-navigation -->
 		</div>
 
 	</div><!-- #content -->
