@@ -19,9 +19,10 @@
  	
     	<!--BEGIN #masonry -->	
 		<div id="masonry">
-					
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 			
+
+
 			<!--BEGIN .item -->	
 			<div class="item normal" data-order='1'>
 			
@@ -99,7 +100,7 @@
 								
 			<?php endif; ?>
 			
-			<?php get_template_part('includes/index-loadmore'); ?>
+			<?php get_template_part('includes/index-loadmore'); ?> 
 					
 		<!--END #masonry -->
 		</div>
